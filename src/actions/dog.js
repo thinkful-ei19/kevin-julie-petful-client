@@ -1,6 +1,6 @@
-const apiUrl = "/api/dog";
+const API_BASE_URL = "../config";
 
-export function fetchDog() {
+export const fetchDog = () => {
   const options = {
     method: "GET",
     headers: {
@@ -9,7 +9,8 @@ export function fetchDog() {
     }
   };
   return function(dispatch) {
-    return fetch(apiUrl, options)
+    dispatch(fetchDogRequest());
+    return fetch(API_BASE_URL, options)
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -22,24 +23,29 @@ export function fetchDog() {
   };
 };
 
-export const adpotDog = formData => dispatch => {
-  dispatch(AdoptDogRequest());
-  return fetch('http://localhost:8080/api/dogs', {
+export const adpotDog = () => dispatch => {
+  dispatch(adoptDogRequest());
+  return fetch(API_BASE_URL, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(formData),
   })
     .then(res => {
       if (!res.ok) {
         throw new Error(res.statusText);
       }
-      return res.json();
+      return res.statusText;
     })
-    .then(data => dispatch(AdoptDogSuccess(data)))
-    .catch(err => dispatch(AdoptDogError(err)));
+    .then(data => dispatch(adoptDogSuccess(data)))
+    .catch(err => dispatch(adoptDogError(err)));
 };
+
+function fetchDogRequest() {
+  return {
+    type: "FETCH_DOG_REQUEST",
+  };
+}
 
 function fetchDogSuccess(data) {
   return {
@@ -55,10 +61,10 @@ function fetchDogError(err) {
   };
 }
 
-function adoptDogRequest(data) {
+
+function adoptDogRequest() {
   return {
-    type: "ADOPT_DOG_SUCCESS",
-    payload: data
+    type: "ADOPT_DOG_SUCCESS"
   };
 }
 
