@@ -28,9 +28,10 @@ export default function catReducer(state = initialState, action) {
       });
     case 'ADOPT_CAT_SUCCESS':
       return Object.assign({}, state, {
-        pets: null,
+        pets: action.payload,
         error: null,
         loading: false,
+
       });
     case 'ADOPT_CAT_ERROR':
       return Object.assign({}, state, {

@@ -28,7 +28,7 @@ export default function dogReducer(state = initialState, action) {
       });
     case 'ADOPT_DOG_SUCCESS':
       return Object.assign({}, state, {
-        pets: null,
+        pets: action.payload,
         error: null,
         loading: false,
       });

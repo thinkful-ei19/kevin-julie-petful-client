@@ -23,7 +23,7 @@ export const fetchCat = () => {
   };
 }
 
-export const adpotCat = () => dispatch => {
+export const adoptCat = () => dispatch => {
   dispatch(adoptCatRequest());
   return fetch(`${API_BASE_URL}/cat`, {
     method: 'DELETE',
@@ -35,7 +35,7 @@ export const adpotCat = () => dispatch => {
       if (!res.ok) {
         throw new Error(res.statusText);
       }
-      return res.statusText;
+      return res.json();
     })
     .then(data => dispatch(adoptCatSuccess(data)))
     .catch(err => dispatch(adoptCatError(err)));

@@ -23,7 +23,7 @@ export const fetchDog = () => {
   };
 };
 
-export const adpotDog = () => dispatch => {
+export const adoptDog = () => dispatch => {
   dispatch(adoptDogRequest());
   return fetch(`${API_BASE_URL}/dog`, {
     method: 'DELETE',
@@ -35,7 +35,7 @@ export const adpotDog = () => dispatch => {
       if (!res.ok) {
         throw new Error(res.statusText);
       }
-      return res.statusText;
+      return res.json();
     })
     .then(data => dispatch(adoptDogSuccess(data)))
     .catch(err => dispatch(adoptDogError(err)));

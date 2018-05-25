@@ -11,7 +11,13 @@ export class Dashboard extends React.Component {
   }
 
   onAdoptPet = (data) => {
-    
+    if(data === 'cat') {
+       this.props.dispatch(adoptCat())
+
+    }
+    else if (data === 'dog') {
+    this.props.dispatch(adoptDog())
+    }
   }
 
   render() {
@@ -20,11 +26,15 @@ export class Dashboard extends React.Component {
         <Pet
           {...this.props.cats}
           className="col-6 pet-container"
+          adopt="cat"
+          onAdoptPet={this.onAdoptPet}
         />
 
         <Pet
           {...this.props.dogs}
           className="col-6 pet-container"
+          adopt="dog"
+          onAdoptPet={this.onAdoptPet}
         />
 
       </React.Fragment>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 export default class Pet extends Component {
+
   render() {
     return (
       <React.Fragment>
@@ -18,7 +19,7 @@ export default class Pet extends Component {
               <dt>Story:</dt>
               <dd>{this.props.story}</dd>
             </dl>
-            <button onClick={this.props.onAdoptPet}>Adopt</button>
+            <button onClick={() => this.props.onAdoptPet(this.props.adopt)}>Adopt</button>
           </main>
         </section>
       </React.Fragment>
