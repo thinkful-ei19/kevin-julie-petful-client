@@ -5,12 +5,22 @@ body {
 }
 
 .cats-container {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
   float: left;
 }
 
 .dogs-container {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
   float: right;
 }
+
+
+
+/* === GRID LAYOUT === */
 
 .row {
   max-width: 1400px;
