@@ -1,33 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
 import Pet from './components/Pet'
 
-export default class App extends Component {
+export class Dashboard extends React.Component {
 
-  catToAdpot = (data) => {
-    console.log('cat to adpot', data)
-  }
-
-  dogToAdpot = (data) => {
-    console.log('dog to adopt', data)
-  }
-
-  onAdoptPet = (data) => {
-    console.log('on adopt pet', data)
+  componentDidMount() {
+    
   }
 
   render() {
     return (
       <React.Fragment>
         <Pet 
-          catToAdopt={this.catToAdopt}
-          onAdoptPet={this.onAdpotPet}
           className="col-6 pet-container"
         />
 
         <Pet
-          dogToAdopt={this.dogToAdopt}
-          onAdoptPet={this.onAdpotPet} 
           className="col-6 pet-container"
         />
 
@@ -35,3 +24,11 @@ export default class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  warning: state.auth.warning,
+  cats: state.post.catReducers,
+  dogs: state.post.dogReducers
+});
+
+export default connect(mapStateToProps)(Dashboard);
