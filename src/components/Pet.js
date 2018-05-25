@@ -5,19 +5,18 @@ export default class Pet extends Component {
     return (
       <React.Fragment>
         <section className="cats-container">
-          <h1>Cats to Adopt</h1>
-          <h3>Tiberius</h3>
-          <img src="" alt="put dynamic animal description here" />
+          <h3>{this.props.name}</h3>
+          <img src={this.props.imageURL} alt={this.props.imageDescription} />
           <main>
             <dl>
               <dt>Sex:</dt>
-              <dd>Male</dd>
+              <dd>{this.props.sex}</dd>
               <dt>Age:</dt>
-              <dd>1 years</dd>
+              <dd>{this.props.age}</dd>
               <dt>Breed:</dt>
-              <dd>Tabby</dd>
+              <dd>{this.props.breed}</dd>
               <dt>Story:</dt>
-              <dd>Owner moved to another country</dd>
+              <dd>{this.props.story}</dd>
             </dl>
             <button onClick={this.props.onAdoptPet}>Adopt</button>
           </main>

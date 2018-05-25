@@ -14,10 +14,12 @@ export class Dashboard extends React.Component {
     return (
       <React.Fragment>
         <Pet
+          {...this.props.cats}
           className="col-6 pet-container"
         />
 
         <Pet
+          {...this.props.dogs}
           className="col-6 pet-container"
         />
 
@@ -27,9 +29,8 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  warning: state.auth.warning,
-  cats: state.post.catReducers,
-  dogs: state.post.dogReducers
+  cats: state.cat.pets,
+  dogs: state.dog.pets
 });
 
 export default connect(mapStateToProps)(Dashboard);

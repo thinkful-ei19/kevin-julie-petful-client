@@ -3,13 +3,10 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 
-import { cat, dog } from './reducers/index';
+import allReducers from './reducers/index';
 
 const store = createStore(
-  combineReducers({
-    cat,
-    dog,
-  }),
+  allReducers,
   composeWithDevTools(
     applyMiddleware(thunk, logger),
   ),
