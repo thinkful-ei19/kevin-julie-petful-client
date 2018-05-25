@@ -10,7 +10,7 @@ export const fetchCat = () => {
   };
   return function(dispatch) {
     dispatch(fetchCatRequest());
-    return fetch(API_BASE_URL, options)
+    return fetch(`${API_BASE_URL}/cat`, options)
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -25,7 +25,7 @@ export const fetchCat = () => {
 
 export const adpotCat = () => dispatch => {
   dispatch(adoptCatRequest());
-  return fetch(API_BASE_URL, {
+  return fetch(`${API_BASE_URL}/cat`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

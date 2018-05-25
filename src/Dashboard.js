@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Pet from './components/Pet';
-import {fetchCat, adpotCat, fetchDog, adpotDog } from './actions';
+import {fetchCat, adoptCat, fetchDog, adoptDog } from './actions';
 
 export class Dashboard extends React.Component {
 

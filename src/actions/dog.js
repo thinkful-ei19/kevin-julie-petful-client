@@ -1,4 +1,4 @@
-const API_BASE_URL = "../config";
+import API_BASE_URL from '../config';
 
 export const fetchDog = () => {
   const options = {
@@ -10,7 +10,7 @@ export const fetchDog = () => {
   };
   return function(dispatch) {
     dispatch(fetchDogRequest());
-    return fetch(API_BASE_URL, options)
+    return fetch(`${API_BASE_URL}/dog`, options)
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -25,7 +25,7 @@ export const fetchDog = () => {
 
 export const adpotDog = () => dispatch => {
   dispatch(adoptDogRequest());
-  return fetch(API_BASE_URL, {
+  return fetch(`${API_BASE_URL}/dog`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
