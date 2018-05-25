@@ -1,4 +1,4 @@
-const apiUrl = "/api/cat";
+import API_BASE_URL from '../config';
 
 export default function fetchCat() {
   const options = {
@@ -9,7 +9,7 @@ export default function fetchCat() {
     }
   };
   return function(dispatch) {
-    return fetch(apiUrl, options)
+    return fetch(API_BASE_URL, options)
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -24,7 +24,7 @@ export default function fetchCat() {
 
 export const adpotCat = formData => dispatch => {
   dispatch(AdoptCatRequest());
-  return fetch('http://localhost:8080/api/cats', {
+  return fetch(API_BASE_URL, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
