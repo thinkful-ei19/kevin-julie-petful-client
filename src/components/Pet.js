@@ -6,7 +6,7 @@ export default class Pet extends Component {
       <React.Fragment>
         <section className="cats-container">
           <h3>{this.props.name}</h3>
-          <img src={this.props.imageURL} alt={this.props.imageDescription} />
+          <img className="pet-image" src={this.props.imageURL} alt={this.props.imageDescription} />
           <main>
             <dl>
               <dt>Sex:</dt>

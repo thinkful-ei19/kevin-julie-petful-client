@@ -24,15 +24,15 @@ body {
 }
 
 .pet-container {
-  display: block;
-  /* text-align: left; */
-  /* flex-direction: column; */
+  display: flex;
+  justify-content: center;
   width: 100%;
   margin: auto;
 }
 
 .cats-container {
   display: flex;
+  justify-content: center;
   text-align: left;
   flex-direction: column;
   float: left;
@@ -40,9 +40,15 @@ body {
 
 .dogs-container {
   display: flex;
+  justify-content: center;
   text-align: left;
   flex-direction: column;
   float: right;
+}
+
+.pet-image {
+  width: 300px;
+  height: 300px;
 }
 
 
