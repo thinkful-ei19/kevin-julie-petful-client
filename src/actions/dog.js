@@ -1,6 +1,6 @@
 const apiUrl = "/api/dog";
 
-export default function fetchDog() {
+export function fetchDog() {
   const options = {
     method: "GET",
     headers: {

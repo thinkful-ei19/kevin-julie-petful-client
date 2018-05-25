@@ -1,6 +1,6 @@
 import API_BASE_URL from '../config';
 
-export default function fetchCat() {
+export const fetchCat = () => {
   const options = {
     method: "GET",
     headers: {
@@ -9,6 +9,7 @@ export default function fetchCat() {
     }
   };
   return function(dispatch) {
+    dispatch(fetchCatRequest());
     return fetch(API_BASE_URL, options)
       .then(res => {
         if (res.ok) {
@@ -22,24 +23,29 @@ export default function fetchCat() {
   };
 }
 
-export const adpotCat = formData => dispatch => {
-  dispatch(AdoptCatRequest());
+export const adpotCat = () => dispatch => {
+  dispatch(adoptCatRequest());
   return fetch(API_BASE_URL, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(formData),
   })
     .then(res => {
       if (!res.ok) {
         throw new Error(res.statusText);
       }
-      return res.json();
+      return res.statusText;
     })
-    .then(data => dispatch(AdoptCatSuccess(data)))
-    .catch(err => dispatch(AdoptCatError(err)));
+    .then(data => dispatch(adoptCatSuccess(data)))
+    .catch(err => dispatch(adoptCatError(err)));
 };
+
+function fetchCatRequest() {
+  return {
+    type: "FETCH_CAT_REQUEST",
+  };
+}
 
 function fetchCatSuccess(data) {
   return {
@@ -56,10 +62,9 @@ function fetchCatError(err) {
 }
 
 
-function adoptCatRequest(data) {
+function adoptCatRequest() {
   return {
-    type: "ADOPT_CAT_SUCCESS",
-    payload: data
+    type: "ADOPT_CAT_SUCCESS"
   };
 }
 
