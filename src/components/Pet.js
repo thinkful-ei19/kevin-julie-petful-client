@@ -19,7 +19,7 @@ export default class Pet extends Component {
               <dt>Story:</dt>
               <dd>Owner moved to another country</dd>
             </dl>
-            <button onClick={this.props.onAdoptPet}>Adpot</button>
+            <button onClick={this.props.onAdoptPet}>Adopt</button>
           </main>
         </section>
       </React.Fragment>
