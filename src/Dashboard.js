@@ -10,6 +10,10 @@ export class Dashboard extends React.Component {
     Promise.all([this.props.dispatch(fetchCat()), this.props.dispatch(fetchDog())]);
   }
 
+  onAdoptPet = (data) => {
+    
+  }
+
   render() {
     return (
       <React.Fragment>
